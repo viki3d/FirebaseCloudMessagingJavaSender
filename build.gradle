@@ -21,6 +21,9 @@ repositories {
 }
 
 dependencies {
+
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:28.0-jre'
 
@@ -30,5 +33,5 @@ dependencies {
 
 application {
     // Define the main class for the application
-    mainClassName = 'com.viki3d.firebase.sender.App'
+    mainClassName = 'com.viki3d.firebase.sender.Main'
 }

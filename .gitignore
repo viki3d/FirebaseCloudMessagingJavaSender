@@ -3,3 +3,6 @@
 
 # Ignore Gradle build output directory
 build
+/bin/
+/FcmJavaSender.log
+/pushcontrol-f9e17-firebase-adminsdk-bmx3w-f031f3d5d4.json
