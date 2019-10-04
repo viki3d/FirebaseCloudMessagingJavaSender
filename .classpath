@@ -5,7 +5,6 @@
 	<classpathentry kind="lib" path="gradle/wrapper/gradle-wrapper.jar"/>
 	<classpathentry kind="lib" path="libs/firebase.jar"/>
 	<classpathentry kind="lib" path="libs/junit-4.12.jar"/>
-	<classpathentry kind="lib" path="libs/log4j-over-slf4j-1.7.28.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

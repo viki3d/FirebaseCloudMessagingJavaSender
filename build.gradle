@@ -35,3 +35,13 @@ application {
     // Define the main class for the application
     mainClassName = 'com.viki3d.firebase.sender.Main'
 }
+
+jar {
+    manifest {
+        attributes(
+            'Manifest-Version': '1.0',
+            'Main-Class': 'com.viki3d.firebase.sender.Main',
+            'Class-Path': 'libs/firebase.jar libs/junit-4.12.jar libs/log4j-over-slf4j-1.7.28.jar',
+        )
+    }
+}

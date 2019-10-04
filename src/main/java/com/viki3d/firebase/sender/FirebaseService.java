@@ -21,6 +21,7 @@ public class FirebaseService {
 		SERVER_KEY("-serverKey"),
 		TOKEN("-token"),
 		TOPIC("-topic"),
+		MSG_DATA("-msgData"),
 		ANDROID_PRIORITY("-android-priority"),
 		APS_ALERT("-aps-alert"),
 		LOG_TO_FILE("-logToFile")
@@ -45,6 +46,7 @@ public class FirebaseService {
 		System.out.println(" -serverKey <your-firebase-adminsdk-java-server-key.json>");
 		System.out.println(" [-token <your-device-token-string>]");
 		System.out.println(" [-topic <your-topic>]");
+		System.out.println(" [-msgData <key1=val1;key2=val2;...>]");
 		System.out.println(" [-android-priority <NORMAL/HIGH>]");
 		System.out.println(" [-logToFile <filename>]");
 		
@@ -97,6 +99,26 @@ public class FirebaseService {
 								if (i>=args.length-1)
 									throw new Exception("Error: Parameter " + ParamsEnum.TOPIC.getParameterName() + " value is missing !" );
 								topic = args[i+1];
+								i++;
+								continue outer;
+							}
+							break;
+						case MSG_DATA:
+							if (pe.getParameterName().toUpperCase().equals(args[i].toUpperCase())) {
+								if (i>=args.length-1)
+									throw new Exception("Error: Parameter " + ParamsEnum.MSG_DATA.getParameterName() + " value is missing !" );
+								String msgDataStr = args[i+1];
+								
+								//  Parse msg data
+								String[] msgDataPairs = msgDataStr.split(";");
+								//  Fill msg data into our variable
+								for (String s: msgDataPairs) {
+									String[] keyVal = s.split("=");
+									if (keyVal.length==2) {
+										data.put(keyVal[0], keyVal[1]);
+									}
+								}
+								
 								i++;
 								continue outer;
 							}
@@ -255,7 +277,6 @@ public class FirebaseService {
 
 		}
 		catch (Exception ex) {
-			LogService.debug(FirebaseService.class, "asdasdddddddddddddd");
 			LogService.error(FirebaseService.class, ex.getMessage());
 			ex.printStackTrace();
 		}
